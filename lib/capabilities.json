@@ -1,0 +1,33 @@
+{
+  "_comment": "SINGLE SOURCE OF TRUTH for what Aperture can actually do today. The validator (scripts/validate-pitch.mjs) enforces that only genuinely-shipping capabilities are marked \"live\". Do not set status:\"live\" on anything that is not in production. Allowed live set: Synthetic Data Generation, Domain Adaptation.",
+  "layer": {
+    "name": "Aperture reasoning layer",
+    "status": "private-beta",
+    "note": "auto-ranks root causes and the mAP each fix is worth"
+  },
+  "engines": [
+    {
+      "name": "Synthetic Data Generation",
+      "status": "live",
+      "tone": "gold",
+      "one_liner": "Generate the exact frames your dataset is missing — night, rain, glare, rare classes — with pixel-accurate labels.",
+      "input": "a target class + condition (e.g. cyclist @ night)",
+      "output": "labelled RGB frames, COCO/YOLO json, versioned",
+      "proof": "+11.4 mAP pts on night+rain pilot eval"
+    },
+    {
+      "name": "Domain Adaptation",
+      "status": "live",
+      "tone": "cyan",
+      "one_liner": "Retarget a labelled daytime set into the domain you actually deploy in — no re-shoot, no re-label.",
+      "input": "a labelled source domain + target frames",
+      "output": "style-matched, label-preserved training frames",
+      "proof": "2-day manual pipeline down to a 40-minute run"
+    },
+    { "name": "Physics Simulation", "status": "roadmap", "tone": "violet" },
+    { "name": "Data Balancer", "status": "roadmap", "tone": "teal" },
+    { "name": "Auto-Labelling", "status": "roadmap", "tone": "violet" },
+    { "name": "Hard-Negative Mining", "status": "roadmap", "tone": "teal" },
+    { "name": "Curriculum Learning", "status": "roadmap", "tone": "violet" }
+  ]
+}
